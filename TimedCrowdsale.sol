@@ -28,13 +28,12 @@ contract TimedCrowdsale is Crowdsale {
    * @param _openingTime Crowdsale opening time
    * @param _closingTime Crowdsale closing time
    */
-  constructor(uint256 _openingTime, uint256 _closingTime) public {
+  constructor(uint256 _rate, address _wallet, MonstersGameXToken _token) public
+    Crowdsale(_rate, _wallet, _token)  
+  {
     // solium-disable-next-line security/no-block-members
-    require(_openingTime >= block.timestamp);
-    require(_closingTime >= _openingTime);
-
-    openingTime = _openingTime;
-    closingTime = _closingTime;
+    require(openingTime >= block.timestamp);
+    require(closingTime >= openingTime);
   }
 
   /**

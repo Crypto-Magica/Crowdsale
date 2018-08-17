@@ -50,6 +50,8 @@ contract Crowdsale {
     uint256 value,
     uint256 amount
   );
+  
+  event TokenSending(address indexed beneficiary, uint256 amount);
 
   /**
    * @param _rate Number of token units a buyer gets per wei

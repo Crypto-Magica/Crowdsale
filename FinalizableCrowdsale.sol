@@ -16,6 +16,11 @@ contract FinalizableCrowdsale is Ownable, TimedCrowdsale {
   bool public isFinalized = false;
 
   event Finalized();
+  
+  constructor(uint256 _rate, address _wallet, MonstersGameXToken _token) public
+    TimedCrowdsale(_rate, _wallet, _token) 
+  {
+  }
 
   /**
    * @dev Must be called after crowdsale ends, to do some extra finalization
