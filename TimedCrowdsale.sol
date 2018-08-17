@@ -11,8 +11,8 @@ import "./Crowdsale.sol";
 contract TimedCrowdsale is Crowdsale {
   using SafeMath for uint256;
 
-  uint256 public openingTime;
-  uint256 public closingTime;
+  uint256 public openingTime = 1534377600;
+  uint256 public closingTime = 1542326400;
 
   /**
    * @dev Reverts if not in crowdsale time range.
