@@ -6,7 +6,7 @@ import "./FinalizableCrowdsale.sol";
 contract MonstersGameXTokenCrowdsale is FinalizableCrowdsale {
     
   constructor(uint256 _rate, address _wallet, address _token) public
-    FinalizableCrowdsale(_rate, _wallet, MonsterBitToken(_token)) {
+    FinalizableCrowdsale(_rate, _wallet, MonstersGameXTokenCrowdsale(_token)) {
   }
   
   function setRate(uint256 newRate) public onlyOwner {
