@@ -20,7 +20,7 @@ import "./MonstersToken.sol";
  */
 contract Crowdsale {
   using SafeMath for uint256;
-  using SafeERC20 for ERC20;
+  using SafeERC20 for MonstersGameXToken;
 
   // The token being sold
   MonstersGameXToken public token;
