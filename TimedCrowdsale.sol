@@ -8,11 +8,11 @@ import "./Crowdsale.sol";
  * @title TimedCrowdsale
  * @dev Crowdsale accepting contributions only within a time frame.
  */
-contract TimedCrowdsale is Crowdsale {
+contract TimedCrowdsale is CappedCrowdsale {
   using SafeMath for uint256;
 
-  uint256 public openingTime = 1534377600;
-  uint256 public closingTime = 1542326400;
+  uint256 public openingTime;
+  uint256 public closingTime;
 
   /**
    * @dev Reverts if not in crowdsale time range.
@@ -28,12 +28,15 @@ contract TimedCrowdsale is Crowdsale {
    * @param _openingTime Crowdsale opening time
    * @param _closingTime Crowdsale closing time
    */
-  constructor(uint256 _rate, address _wallet, MonstersGameXToken _token) public
-    Crowdsale(_rate, _wallet, _token)  
+  constructor(uint256 _rate, address _wallet, MonstersGameXToken _token, uint256 _cap, uint256 _openingTime, uint256 _closingTime) public
+    CappedCrowdsale(_rate, _wallet, _token, _cap)  
   {
     // solium-disable-next-line security/no-block-members
-    require(openingTime >= block.timestamp);
-    require(closingTime >= openingTime);
+    //require(_openingTime >= block.timestamp);
+    require(_closingTime >= _openingTime);
+
+    openingTime = _openingTime;
+    closingTime = _closingTime;
   }
 
   /**

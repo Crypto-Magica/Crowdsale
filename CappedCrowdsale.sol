@@ -17,7 +17,9 @@ contract CappedCrowdsale is Crowdsale {
    * @dev Constructor, takes maximum amount of wei accepted in the crowdsale.
    * @param _cap Max amount of wei to be contributed
    */
-  constructor(uint256 _cap) public {
+  constructor(uint256 _rate, address _wallet, MonstersGameXToken _token, uint256 _cap) public
+    Crowdsale(_rate, _wallet, _token) 
+  {
     require(_cap > 0);
     cap = _cap;
   }
