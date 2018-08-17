@@ -3,6 +3,7 @@ pragma solidity ^0.4.24;
 import "./ERC20.sol";
 import "./SafeMath.sol";
 import "./SafeERC20.sol";
+import "./MonstersToken.sol";
 
 
 /**
@@ -55,7 +56,7 @@ contract Crowdsale {
    * @param _wallet Address where collected funds will be forwarded to
    * @param _token Address of the token being sold
    */
-  constructor(uint256 _rate, address _wallet, ERC20 _token) public {
+  constructor(uint256 _rate, address _wallet, MonstersGameXToken _token) public {
     require(_rate > 0);
     require(_wallet != address(0));
     require(_token != address(0));

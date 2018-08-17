@@ -6,7 +6,7 @@ import "./DetailedERC20.sol";
 
 contract MonstersGameXToken is MintableToken, DetailedERC20 {
     
-  function MonstersGameXToken() public DetailedERC20("Monsters-Game-X", "MGX", 18) {
+  constructor() public DetailedERC20("Monsters-Game-X", "MGX", 18) {
   }
   
 }
