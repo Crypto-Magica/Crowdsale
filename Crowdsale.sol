@@ -22,7 +22,7 @@ contract Crowdsale {
   using SafeERC20 for ERC20;
 
   // The token being sold
-  ERC20 public token;
+  MonstersGameXToken public token;
 
   // Address where funds are collected
   address public wallet;
