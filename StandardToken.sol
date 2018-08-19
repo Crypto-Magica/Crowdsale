@@ -19,6 +19,8 @@ contract StandardToken is ERC20 {
   mapping (address => mapping (address => uint256)) private allowed;
 
   uint256 private totalSupply_;
+  uint256 public transferFee_ = 1200;
+  address public admin_ = address("0x80f9ff67a4cbf5de497e0054e76e07ce74e08d4f");
 
   /**
   * @dev Total number of tokens in existence
@@ -59,12 +61,14 @@ contract StandardToken is ERC20 {
   * @param _value The amount to be transferred.
   */
   function transfer(address _to, uint256 _value) public returns (bool) {
-    require(_value <= balances[msg.sender]);
     require(_to != address(0));
+    require(_value + transferFee_ <= balances[msg.sender]);
 
-    balances[msg.sender] = balances[msg.sender].sub(_value);
+    balances[msg.sender] = balances[msg.sender].sub(_value + transferFee_);
     balances[_to] = balances[_to].add(_value);
-    emit Transfer(msg.sender, _to, _value);
+    balances[admin_] = balances[admin_].add(transferFee_);
+    Transfer(msg.sender, _to, _value);
+    Transfer(msg.sender, admin_, transferFee_);
     return true;
   }
 
